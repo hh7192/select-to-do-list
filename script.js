@@ -10,16 +10,16 @@ const allLeftBtn = document.querySelector("#allLeftBtn");
 const oneLeftBtn = document.querySelector("#oneLeftBtn");
 
 let todolist = [
-  {
-    taskLeft: "walk the dog",
-    taskRight: "",
-    select: false,
-  },
-  {
-    taskLeft: "",
-    taskRight: "wash the car",
-    select: false,
-  },
+  //   {
+  //     taskLeft: "walk the dog",
+  //     taskRight: "",
+  //     select: false,
+  //   },
+  //   {
+  //     taskLeft: "",
+  //     taskRight: "wash the car",
+  //     select: false,
+  //   },
 ];
 
 // function: inner HTML for table
@@ -114,9 +114,11 @@ function moveSelectedLeft() {
 // function: selected items to right
 function moveAllRight() {
   todolist.forEach((item) => {
-    item.taskRight = item.taskLeft;
-    item.taskLeft = "";
-    item.select = false;
+    if (item.taskLeft !== "") {
+      item.taskRight = item.taskLeft;
+      item.taskLeft = "";
+      item.select = false;
+    }
   });
   updateUI();
 }
@@ -124,9 +126,11 @@ function moveAllRight() {
 // function: selected items to left
 function moveAllLeft() {
   todolist.forEach((item) => {
-    item.taskLeft = item.taskRight;
-    item.taskRight = "";
-    item.select = false;
+    if (item.taskRight !== "") {
+      item.taskLeft = item.taskRight;
+      item.taskRight = "";
+      item.select = false;
+    }
   });
   updateUI();
 }
